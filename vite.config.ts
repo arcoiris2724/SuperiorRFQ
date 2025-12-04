@@ -1,19 +1,10 @@
-import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react-swc";
-import path from "path";
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react-swc'
 
-// https://vitejs.dev/config/
-export default defineConfig(({ mode }) => ({
-  server: {
-    host: "::",
-    port: 8080,
+export default defineConfig({
+  base: '/SuperiorRFQ/',        // 👈 important for GitHub Pages
+  build: {
+    outDir: 'docs',             // 👈 GitHub Pages will serve from /docs
   },
-  plugins: [
-    react()
-  ].filter(Boolean),
-  resolve: {
-    alias: {
-      "@": path.resolve(__dirname, "./src"),
-    },
-  },
-}));
+  plugins: [react()],
+})
